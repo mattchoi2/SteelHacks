@@ -1,0 +1,103 @@
+body {
+  background-color:#F4EFE8;
+  margin-bottom:100px; /* So the bottom nav doesn't cut anything off */
+}
+
+.welcomeContain {
+  position:absolute;
+  top:20vh;
+  width:100%;
+}
+
+.welcomeTitle {
+  text-align:center;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight:100;
+}
+
+.welcomeLogoImg {
+  display:block;
+  margin:auto;
+  width:100px;
+  position:relative;
+  left:50%;
+  margin-left:-50px;
+}
+
+.welcomeBtn {
+  background-color:#F45B69;
+}
+
+.welcomeBtnContain {
+  padding-top:40px;
+  position:relative;
+  text-align:center;
+}
+
+.welcomeBtn:hover {
+  background-color:#CC4B56;
+}
+
+.nav {
+  position:fixed;
+  bottom:0px;
+  width:100%;
+  text-align:center;
+}
+
+.navItem {
+  display:inline-block;
+  padding:10px 20px;
+  color:#F45A67;
+}
+
+.navItem:hover {
+  color:#CC4B56;
+}
+
+.title {
+  text-align:center;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight:100;
+}
+
+h2.profileTitle {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight:300;
+  font-size:22px;
+}
+
+h2.profileTitle {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight:100;
+}
+
+.input-field input[type=password]:focus {
+  border-bottom: 1px solid #000 !important;
+  box-shadow: 0 1px 0 0 #000 !important;
+}
+
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid #000 !important;
+  box-shadow: 0 1px 0 0 #000 !important;
+}
+
+.input-field input[type=text]:focus + label {
+  color:#CC4B56 !important;
+}
+
+.input-field input[type=password]:focus + label {
+  color:#CC4B56 !important;
+}
+
+.input-field .prefix.active {
+  color:#CC4B56 !important;
+}
+
+.formSubmit {
+  background-color:#F45A67;
+}
+
+.formSubmit:hover {
+  background-color:#CC4B56;
+}
