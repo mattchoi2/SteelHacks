@@ -9,10 +9,35 @@ body {
   width:100%;
 }
 
+.swipeImg {
+  width:100%;
+  height:auto;
+  display:none;
+}
+
+.swipeActive {
+  display:block;
+}
+
+.swipeTitle {
+  font-size:26px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight:100;
+  margin:20px;
+}
+
 .welcomeTitle {
   text-align:center;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight:100;
+}
+
+.delInterest {
+  cursor:pointer;
+}
+
+.delInterest:hover {
+  color:#F45B69;
 }
 
 .welcomeSubtitle {
@@ -55,6 +80,7 @@ body {
   width:100%;
   text-align:center;
   z-index:10;
+  background-color:#212121;
 }
 
 .navItem {
@@ -71,6 +97,14 @@ body {
   text-align:center;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight:100;
+}
+
+.dropdown-content li span {
+  color:black !important;
+}
+
+.select-wrapper {
+  width:300px;
 }
 
 h2.profileTitle {

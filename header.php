@@ -25,12 +25,13 @@
   <link rel="stylesheet" href="style.css">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>datingBase</title>
 </head>
 
 <?php if (isset($_SESSION['uid'])) { ?>
 <div class="nav">
-  <a href=""><div class="navItem"><i class="medium material-icons">favorite</i></div></a>
-  <a href=""><div class="navItem"><i class="medium material-icons">message</i></div></a>
+  <a href="matches.php"><div class="navItem"><i class="medium material-icons">favorite</i></div></a>
+  <a href="index.php"><div class="navItem"><i class="medium material-icons">message</i></div></a>
   <a href="my_profile.php"><div class="navItem"><i class="medium material-icons">account_box</i></div></a>
 </div>
 <?php } ?>

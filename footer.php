@@ -22,12 +22,28 @@
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) { // executes on success
-            var results = this.responseText;
-            alert(results);
+          var results = this.responseText;
+          alert(results);
         }
     };
-    xmlhttp.open("GET", "db_functions.php?i=" + new_interest + "&uid=" + <?php echo $_SESSION['uid']; ?>, true);
+    xmlhttp.open("GET", "db_functions.php?i=" + new_interest + "&uid=" + <?php echo $_SESSION['uid']?> + "&function=insert_interest", true);
     xmlhttp.send();
+  }
+  function match_with(elem){
+	  var add_uid = $("#muid").val().trim();
+	  if(add_uid == ""){
+		  //something
+	  }else{
+		  var xmlgttp = new XMLHttpRequest();
+		  xmlhttp.onreadystatechange = function() {
+			  if(this.readyState == 4 && this.status == 200){
+				  var results = this.responseText;
+				  alert(results);
+			  }
+		  };
+	  }
+	xmlhttp.open("GET", "db_functions.php?i="+add_uid+"&uid="+<?php echo $_SESSION['uid'];?> + "&function=delete_interest", true);
+	xmlhttp.send();
   }
 </script>
 
