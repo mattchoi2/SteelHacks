@@ -3,7 +3,6 @@
 	$row = null;
 	$sql = "SELECT * FROM users WHERE uid = ".$_SESSION['uid'];
 	$result = $conn -> query($sql);
-	echo "UID: ".$_SESSION['uid'];
 	if($result -> num_rows > 0){
 		$row = $result -> fetch_assoc();
 	}
@@ -73,14 +72,18 @@
 				<input type="text" id="fos" name="fos" value="<?php echo $row['fos']; ?>">
 			</div>
 			<h2 class="profileTitle">Interests:</h2>
-			<div class="input-field">
+				<ul class="collection" id="interestList"></ul>
 				<?php fetch_interests($conn); ?>
+			<div class="input-field">
+				<label for="interest">Interest</label>
+				<input type="text" id="interest" name="interest">
 			</div>
+			<a onclick="add_interest_asynch(this)" class="btn formSubmit">Interests ++</a>
 
 			<h2 class="profileTitle">Languages:</h2>
 
 
-			<input type="submit" class="btn" name="prof_update" value="Commit">
+			<input type="submit" class="btn formSubmit" name="prof_update" value="Commit">
 		</form>
 	</div>
 </body>
@@ -91,5 +94,7 @@ function fetch_interests($conn) {
 	$sql = "SELECT * FROM users";
 	$result = $conn -> query($sql);
 }
+
+include 'footer.php';
 
 ?>

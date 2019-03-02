@@ -15,6 +15,17 @@ body {
   font-weight:100;
 }
 
+.welcomeSubtitle {
+  position:absolute;
+  width:100%;
+  text-align:center;
+  top:-70px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight:100;
+  font-size:18px;
+  color:gray;
+}
+
 .welcomeLogoImg {
   display:block;
   margin:auto;
@@ -43,6 +54,7 @@ body {
   bottom:0px;
   width:100%;
   text-align:center;
+  z-index:10;
 }
 
 .navItem {
@@ -78,6 +90,11 @@ h2.profileTitle {
 }
 
 .input-field input[type=text]:focus {
+  border-bottom: 1px solid #000 !important;
+  box-shadow: 0 1px 0 0 #000 !important;
+}
+
+.input-field textarea:focus {
   border-bottom: 1px solid #000 !important;
   box-shadow: 0 1px 0 0 #000 !important;
 }

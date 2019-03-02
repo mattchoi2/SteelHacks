@@ -31,6 +31,6 @@
 <div class="nav">
   <a href=""><div class="navItem"><i class="medium material-icons">favorite</i></div></a>
   <a href=""><div class="navItem"><i class="medium material-icons">message</i></div></a>
-  <a href=""><div class="navItem"><i class="medium material-icons">account_box</i></div></a>
+  <a href="my_profile.php"><div class="navItem"><i class="medium material-icons">account_box</i></div></a>
 </div>
 <?php } ?>

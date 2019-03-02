@@ -2,6 +2,9 @@
 
 <body>
   <div class="welcomeContain">
+    <?php if (isset($_SESSION['uid'])) { ?>
+      <p class="welcomeSubtitle">Welcome user <?php echo $_SESSION['uid']; ?>!</p>
+    <?php } ?>
     <img class="welcomeLogoImg" src="assets/structure/logo.png">
     <h1 class="welcomeTitle">&lt;datingBase/&gt;</h1>
     <div class="welcomeBtnContain">
