@@ -8,10 +8,14 @@
 	}
 	$uids = [];
 	foreach($interests as &$interest){
-		$sql = "SELECT * FROM `interests` WHERE int = '".$interest."'";
+		$sql = "SELECT * FROM `interests` WHERE `int` = '".$interest."'";
 		$result = $conn -> query($sql);
-		while($row = $result -> fetch_assoc()){
-			$uids[] = $row['iid'];
+		if ($result->num_rows === 0) {
+			echo "no matches :(";
+		} else {
+			while($row = $result -> fetch_assoc()){
+				$uids[] = $row['iid'];
+			}
 		}
 	}
 	$sql = "SELECT * FROM `languages` WHERE lid = '".$_SESSION['uid']."'";
@@ -41,6 +45,7 @@
 		<div class="row">
 			<div class="col s12">
 			<?php
+				$matchNum = 0;
 				foreach($uids as &$uid){
 					if ($uid == $_SESSION['uid']) { continue; }
 					$sql = "SELECT * FROM `users` WHERE uid = '".$uid."'";
@@ -54,7 +59,7 @@
 						$images[] = $row['path'];
 					}
 			?>
-				<div class="profileContain">
+				<div data-num="<?php echo $matchNum; ?>" class="profileContain <?php if ($matchNum == 0) { echo "profileActive"; } ?>">
 					<p class='swipeTitle'><?php echo $matchInfo['name']; ?></p>
 					<div class="swipeImgContain">
 						<?php
@@ -67,9 +72,20 @@
 						}
 						?>
 					</div>
+					<div class="matchBtnContain">
+						<a onclick="match(this)" class="matchBtn waves-effect waves-light formSubmit btn">Match</a>
+						<a onclick="next(this)" class="matchBtn waves-effect waves-light formSubmit btn">Next</a>
+					</div>
+					<h2 class="profileTitle">Bio:</h2>
+					<p><?php echo $matchInfo["bio"]; ?></p>
+					<h2 class="profileTitle">Interests:</h2>
+					<ul class="collection" id="interestList"><?php fetch_interests($conn, $uid); ?></ul>
+					<h2 class="profileTitle">Languages:</h2>
+					<ul class="collection" id="languageList"><?php fetch_languages($conn, $uid); ?></ul>
 				</div>
 
 			<?php
+					$matchNum += 1;
 				}
 			?>
 			</div>
@@ -77,11 +93,33 @@
 	</div>
 
 </body>
+<?php
+function fetch_interests($conn, $uid) {
+	$sql = "SELECT * FROM interests WHERE iid = " . $uid;
+	$result = $conn -> query($sql);
+	if ($result -> num_rows > 0) {
+		while($row = $result->fetch_assoc()) {
+			if ($row["int"] != "") {
+				echo "<li class='collection-item'>" . $row["int"] . "</li>";
+			}
+		}
+	}
+}
+
+function fetch_languages($conn, $uid) {
+	$sql = "SELECT * FROM language_list WHERE `lid`='" . $uid . "'";
+	$result = $conn->query($sql);
+	if ($result -> num_rows > 0) {
+		while($row = $result->fetch_assoc()) {
+			if ($row["lang"] != "") {
+				echo "<li class='collection-item'>" . $row["lang"] . "</li>";
+			}
+		}
+	}
+}
+?>
 
 <script>
-var instance = M.Carousel.init({
-  fullWidth: true
-});
 
 function nextImg(elem) {
 	$(elem).removeClass("swipeActive");
@@ -94,9 +132,28 @@ function nextImg(elem) {
 		}
 	});
 	$(nextImg).addClass("swipeActive");
+}
 
-	//alert($(next_to_show).data("order"));
+function match(elem) {
+	nextProfile(elem);
+}
 
+function next(elem) {
+	nextProfile(elem);
+}
+
+function nextProfile(elem) {
+	var profile = $(elem).parent().parent();
+	var total = $(profile).parent().children("div.profileContain").length;
+	var nextProfileNum = ($(profile).data("num") + 1) % total;
+	var nextProfile = null;
+	$(profile).parent().children("div.profileContain").each(function() {
+		if (parseInt($(this).data("num")) == nextProfileNum) {
+			nextProfile = this;
+		}
+	});
+	$(nextProfile).addClass("profileActive");
+	$(profile).removeClass("profileActive");
 }
 </script>
 <?php include "footer.php";?>

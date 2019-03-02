@@ -21,7 +21,7 @@
 		$total = count($_FILES['upload']['name']);
 		for($i = 0; $i < $total; $i++){
 			$tmpFilePath = $_FILES['upload']['tmp_name'][$i];
-			
+
 			if($tmpFilePath != ""){
 				$newFilePath = "images/".$_FILES['upload']['name'][$i];
 				if(move_uploaded_file($tmpFilePath, $newFilePath)){
@@ -97,7 +97,7 @@
 			<a onclick="add_interest_asynch(this)" class="btn formSubmit">Interests ++</a>
 
 			<h2 class="profileTitle">Languages:</h2>
-
+			<ul class="collection" id="languageList"></ul>
 			<div class="input-field">
 				<i class="material-icons prefix">code</i>
         <input type="text" id="autocomplete-input" class="autocomplete">
