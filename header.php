@@ -1,5 +1,5 @@
 <?php
-  $conn = new mysqli('localhost', 'pittdelt_pitt' , 'password123', 'pittdelt_datingbase');
+  $conn = new mysqli('REDACTED', 'REDACTED' , 'REDACTED', 'REDACTED');
   /* check connection */
   if ($conn->connect_errno) {
     echo "Connect failed: %s\n", $mysqli->connect_error;
